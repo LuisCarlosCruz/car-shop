@@ -2,10 +2,10 @@ import { expect } from 'chai';
 import sinon, { SinonStub } from 'sinon';
 import { Model } from 'mongoose';
 import CarService from '../../../services/carService';
-// import MotorcycleService from '../../../services/motorcycleService';
-// import { Motorcycle } from '../../../interfaces/MotorcycleInterface';
 import mocks from '../mocks';
 import { Car } from '../../../interfaces/CarInterface';
+import MotorcycleService from '../../../services/motorcycleService';
+import { Motorcycle } from '../../../interfaces/motorcycleInterface';
 
 describe('Teste da camada Car Service', () => {
   
@@ -113,18 +113,18 @@ describe('Teste da camada Motorcycle Model', () => {
       (Model.create as SinonStub).restore()
     })
     
-    // it('Valida se Motorcycle foi criado com sucesso', async () => {
-    //   const motorcycleService = new MotorcycleService();
-    //   const motorcycleCreate = await motorcycleService
-    //     .create(mocks.mockMotorcycleBody as Motorcycle);
-    //   expect(motorcycleCreate).to.be.deep.equal(mocks.mockMotorcycle);
-    // })
+    it('Valida se Motorcycle foi criado com sucesso', async () => {
+      const motorcycleService = new MotorcycleService();
+      const motorcycleCreate = await motorcycleService
+        .create(mocks.mockMotorcycleBody as Motorcycle);
+      expect(motorcycleCreate).to.be.deep.equal(mocks.mockMotorcycle);
+    })
 
-    // it('Valida se houve erro na criação!', async () => {
-    //   const motorcycleService = new MotorcycleService();
-    //   const motorcycleCreate = await motorcycleService.create( {} as Motorcycle );
-    //   expect(motorcycleCreate).to.haveOwnProperty('error');
-    // })
+    it('Valida se houve erro na criação!', async () => {
+      const motorcycleService = new MotorcycleService();
+      const motorcycleCreate = await motorcycleService.create( {} as Motorcycle );
+      expect(motorcycleCreate).to.haveOwnProperty('error');
+    })
   })
 
   describe('testa a função find Motorcycle', () => {
@@ -136,10 +136,10 @@ describe('Teste da camada Motorcycle Model', () => {
       (Model.find as SinonStub).restore()
     })
     
-    // it('Valida se busca Motorcycle foi feita com sucesso', async () => {
-    //   const motorcycleService = new MotorcycleService();
-    //   const motorcycleFind = await motorcycleService.read();
-    //   expect(motorcycleFind).to.be.deep.equal([mocks.mockMotorcycle]);
+    it('Valida se busca Motorcycle foi feita com sucesso', async () => {
+      const motorcycleService = new MotorcycleService();
+      const motorcycleFind = await motorcycleService.read();
+      expect(motorcycleFind).to.be.deep.equal([mocks.mockMotorcycle]);
     })
   })
 
@@ -152,11 +152,11 @@ describe('Teste da camada Motorcycle Model', () => {
       (Model.findOne as SinonStub).restore()
     })
     
-    // it('Valida se busca por 1 Motorcycle foi feita com sucesso', async () => {
-    //   const motorcycleService = new MotorcycleService();
-    //   const motorcycleFind = await motorcycleService.readOne(mocks.mockMotorcycleId);
-    //   expect(motorcycleFind).to.be.deep.equal(mocks.mockMotorcycle);
-    // })
+    it('Valida se busca por 1 Motorcycle foi feita com sucesso', async () => {
+      const motorcycleService = new MotorcycleService();
+      const motorcycleFind = await motorcycleService.readOne(mocks.mockMotorcycleId);
+      expect(motorcycleFind).to.be.deep.equal(mocks.mockMotorcycle);
+    })
   })
 
   describe('testa a função update Motorcycle', () => {
@@ -168,19 +168,19 @@ describe('Teste da camada Motorcycle Model', () => {
       (Model.findByIdAndUpdate as SinonStub).restore()
     })
     
-    // it('Valida se busca por 1 Motorcycle foi feita com sucesso', async () => {
-    //   const motorcycleService = new MotorcycleService();
-    //   const motorcycleUpdate = await motorcycleService
-    //     .update(mocks.mockMotorcycleId, mocks.mockMotorcycleBody as Motorcycle);
-    //   expect(motorcycleUpdate).to.be.deep.equal(mocks.mockMotorcycle);
-    // })
+    it('Valida se busca por 1 Motorcycle foi feita com sucesso', async () => {
+      const motorcycleService = new MotorcycleService();
+      const motorcycleUpdate = await motorcycleService
+        .update(mocks.mockMotorcycleId, mocks.mockMotorcycleBody as Motorcycle);
+      expect(motorcycleUpdate).to.be.deep.equal(mocks.mockMotorcycle);
+    })
 
-    // it('Valida se houve erro no update!', async () => {
-    //   const motorcycleService = new MotorcycleService();
-    //   const motorcycleCreate = await motorcycleService
-    //     .update(mocks.mockMotorcycleId, {} as Motorcycle);
-    //   expect(motorcycleCreate).to.haveOwnProperty('error');
-    // })
+    it('Valida se houve erro no update!', async () => {
+      const motorcycleService = new MotorcycleService();
+      const motorcycleCreate = await motorcycleService
+        .update(mocks.mockMotorcycleId, {} as Motorcycle);
+      expect(motorcycleCreate).to.haveOwnProperty('error');
+    })
   })
 
   describe('testa a função delete Motorcycle', () => {
@@ -192,10 +192,10 @@ describe('Teste da camada Motorcycle Model', () => {
       (Model.findOneAndDelete as SinonStub).restore()
     })
     
-    // it('Valida se busca por 1 Motorcycle foi feita com sucesso', async () => {
-    //   const motorcycleService = new MotorcycleService();
-    //   const motorcycleDelete = await motorcycleService.delete(mocks.mockMotorcycleId);
-    //   expect(motorcycleDelete).to.be.deep.equal(1);
-    // })
+    it('Valida se busca por 1 Motorcycle foi feita com sucesso', async () => {
+      const motorcycleService = new MotorcycleService();
+      const motorcycleDelete = await motorcycleService.delete(mocks.mockMotorcycleId);
+      expect(motorcycleDelete).to.be.deep.equal(1);
+    })
   })
-// })
+})

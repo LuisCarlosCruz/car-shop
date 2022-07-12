@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import sinon, { SinonStub } from 'sinon';
 import CarModel from '../../../models/carModel';
-// import MotorcycleModel from '../../../models/motorcycleModel';
+import MotorcycleModel from '../../../models/motorcycleModel';
 import { Model } from 'mongoose';
 import mocks from '../mocks';
-// import { Motorcycle } from '../../../interfaces/MotorcycleInterface';
+import { Motorcycle } from '../../../interfaces/motorcycleInterface';
 
 describe('Teste da camada Car Model', () => {
   
@@ -100,12 +100,12 @@ describe('Teste da camada Motorcycle Model', () => {
       (Model.create as SinonStub).restore()
     })
     
-    // it('Valida se Motorcycle foi criado com sucesso', async () => {
-    //   const motorcycleModel = new MotorcycleModel();
-    //   const motorcycleCreate = await motorcycleModel
-    //     .create(mocks.mockMotorcycleBody as Motorcycle);
-    //   expect(motorcycleCreate).to.be.deep.equal(mocks.mockMotorcycle);
-    // })
+    it('Valida se Motorcycle foi criado com sucesso', async () => {
+      const motorcycleModel = new MotorcycleModel();
+      const motorcycleCreate = await motorcycleModel
+        .create(mocks.mockMotorcycleBody as Motorcycle);
+      expect(motorcycleCreate).to.be.deep.equal(mocks.mockMotorcycle);
+    })
   })
 
   describe('testa a função find Motorcycle', () => {
@@ -118,9 +118,9 @@ describe('Teste da camada Motorcycle Model', () => {
     })
     
     it('Valida se busca Motorcycle foi feita com sucesso', async () => {
-      // const motorcycleModel = new MotorcycleModel();
-      // const motorcycleFind = await motorcycleModel.read();
-      // expect(motorcycleFind).to.be.deep.equal([mocks.mockMotorcycle]);
+      const motorcycleModel = new MotorcycleModel();
+      const motorcycleFind = await motorcycleModel.read();
+      expect(motorcycleFind).to.be.deep.equal([mocks.mockMotorcycle]);
     })
   })
 
@@ -167,9 +167,9 @@ describe('Teste da camada Motorcycle Model', () => {
     })
     
     it('Valida se busca por 1 Motorcycle foi feita com sucesso', async () => {
-      // const motorcycleModel = new MotorcycleModel();
-      // const motorcycleDelete = await motorcycleModel.delete(mocks.mockMotorcycleId);
-      // expect(motorcycleDelete).to.be.deep.equal(1);
+      const motorcycleModel = new MotorcycleModel();
+      const motorcycleDelete = await motorcycleModel.delete(mocks.mockMotorcycleId);
+      expect(motorcycleDelete).to.be.deep.equal(1);
     })
   })
 })
