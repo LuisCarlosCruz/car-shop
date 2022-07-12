@@ -26,18 +26,18 @@ class CarService extends Service<Car> {
     return car;
   };
 
-  // update = async (id: string, body: Car):
-  // Promise<Car | ServiceError | Error | null> => {
-  //   if (id.length < 24) return null;
-  //   const valid = CarSchema.merge(VehicleSchema);
-  //   const parsed = valid.safeParse(body);
-  //   if (!parsed.success) {
-  //     return { error: parsed.error };
-  //   }
-  //   const car = await this.model.update(id, body);
-  //   if (!car) return { error: 'defaultError' };
-  //   return car;
-  // };
+  update = async (id: string, body: Car):
+  Promise<Car | ServiceError | Error | null> => {
+    if (id.length < 24) return null;
+    const valid = CarSchema.merge(vehicleSchema);
+    const parsed = valid.safeParse(body);
+    if (!parsed.success) {
+      return { error: parsed.error };
+    }
+    const car = await this.model.update(id, body);
+    if (!car) return { error: 'defaultError' };
+    return car;
+  };
 
   // delete = async (id: string): Promise<Car | null> => {
   //   if (id.length < 24) return null;
