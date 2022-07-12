@@ -51,9 +51,9 @@ abstract class Controller<T> {
     res: Response<T | ResponseError>,
   ): Promise<typeof res>;
 
-  // abstract delete(
-  //   req: Request<{ id: string; }>,
-  //   res: Response<T | ResponseError>,
-  // ): Promise<typeof res>;
+  abstract delete(
+    req: Request<{ id: string; }>,
+    res: Response<T | ResponseError>,
+  ): Promise<typeof res>;
 }
 export default Controller;

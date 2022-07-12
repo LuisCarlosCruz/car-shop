@@ -3,7 +3,7 @@ import Service, { ServiceError, Error } from '.';
 import CarModel from '../models/carModel';
 import { vehicleSchema } from '../interfaces/VehicleInterface';
 
-// const errorMessage = 'Object not found';
+const errorMessage = 'Object not found';
 
 class CarService extends Service<Car> {
   constructor(model = new CarModel()) {
@@ -39,12 +39,12 @@ class CarService extends Service<Car> {
     return car;
   };
 
-  // delete = async (id: string): Promise<Car | null> => {
-  //   if (id.length < 24) return null;
-  //   const car = await this.model.delete(id);
-  //   if (!car) throw new Error(errorMessage);
-  //   return car;
-  // };
+  delete = async (id: string): Promise<Car | null> => {
+    if (id.length < 24) return null;
+    const car = await this.model.delete(id);
+    if (!car) throw new Error(errorMessage);
+    return car;
+  };
 }
 
 export default CarService;
