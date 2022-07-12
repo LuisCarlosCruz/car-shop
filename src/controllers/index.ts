@@ -41,10 +41,10 @@ abstract class Controller<T> {
     }
   };
 
-  // abstract readOne(
-  //   req: Request<{ id: string; }>,
-  //   res: Response<T | ResponseError>
-  // ): Promise<typeof res>;
+  abstract readOne(
+    req: Request<{ id: string; }>,
+    res: Response<T | ResponseError>
+  ): Promise<typeof res>;
 
   // abstract update(
   //   req: RequestWithBody<T>,
