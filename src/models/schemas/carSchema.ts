@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Car } from '../interfaces/CarInterface';
+import { Car } from '../../interfaces/CarInterface';
 
 const carSchema = new Schema<Car>({
   model: {
@@ -16,7 +16,6 @@ const carSchema = new Schema<Car>({
   },
   status: {
     type: Boolean,
-    required: false,
   },
   buyValue: {
     type: Number,
@@ -33,4 +32,5 @@ const carSchema = new Schema<Car>({
 }, { versionKey: false });
 
 const carSchemaModel = model<Car>('Car', carSchema);
+
 export default carSchemaModel;

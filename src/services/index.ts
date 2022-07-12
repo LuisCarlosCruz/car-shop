@@ -1,28 +1,37 @@
 import { ZodError } from 'zod';
 import Model from '../models';
 
-interface ServiceError {
+export interface ServiceError {
   error: ZodError;
 }
 
-abstract class Services<T> {
-  constructor(protected model: Model<T>) {}
-
-  public create = async (
-    objeto: T,
-  ): Promise<T | null | ServiceError> => this.model
-    .create(objeto);
-
-  public read = async (): Promise<T[]> => this.model.read();
-
-  public readOne = async (id: string): Promise<T | null> => this.model
-    .readOne(id);
-
-  public update = async (id: string, objeto: T): Promise<T | null> => this.model
-    .update(id, objeto);
-
-  public delete = async (id: string): Promise<T | null> => this.model
-    .delete(id);
+export interface Error {
+  error: 'defaultError'
 }
 
-export default Services;
+abstract class Service<T> {
+  constructor(protected model: Model<T>) { }
+
+  public async create(body: T): Promise<T | null | ServiceError> {
+    return this.model.create(body);
+  }
+
+  public async read(): Promise<T[]> {
+    return this.model.read();
+  }
+
+  public async readOne(id: string): Promise<T | Error | null> {
+    return this.model.readOne(id);
+  }
+
+  public async update(id: string, body: T):
+  Promise<T | null | Error | ServiceError> {
+    return this.model.update(id, body);
+  }
+
+  public async delete(id: string): Promise<T | null> {
+    return this.model.delete(id);
+  }
+}
+
+export default Service;
